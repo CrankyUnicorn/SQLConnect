@@ -3,7 +3,9 @@
 		include 'htmldoc_start.php';
 	}
 ?>
+
 <?php include 'connect.php'; ?>
+
 <?php
 
 	$sql = "SELECT * FROM player";

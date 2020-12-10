@@ -14,9 +14,9 @@
 <!--sidebar-->
 <div class="pc_menubutton" onclick="toggleNav()"></div>
 <div id="pc_sidebar" class="pc_sidebar">
-  <a href="#">Jogadores</a>
-  <a href="#">Personagens</a>
-  <a href="#">Partidas</a>
+  <a href="page_player.php">Jogadores</a>
+  <a href="page_character.php">Personagens</a>
+  <a href="page_match.php">Partidas</a>
   <a href="#">Veículos</a>
   <a href="#">Mapa</a>
   <a href="#">Células</a>

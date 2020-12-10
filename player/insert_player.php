@@ -1,23 +1,26 @@
 <?php
-include 'connect.php';
-include 'input_cleaner.php';
+include '../connect.php';
+include '../input_cleaner.php';
 
-$nick_name = ms_escape_string($_POST["nick_name"]);
+$filePath = "../page_player.php";
+$fileName = "player";
+
+$name = ms_escape_string($_POST["name"]);
 $password = ms_escape_string($_POST["password"]);
 $email = ms_escape_string($_POST["email"]);
  
-if(empty($nick_name) || empty($password) || empty($email)){
-	header("Location: index.php?player=empty");
+if(empty($name) || empty($password) || empty($email)){
+	header("Location: ".$filePath."?".$fileName."=empty");
 	exit();
 }else{
  
-	if(!preg_match("/^[a-zA-Z0-9_.]*$/",$nick_name) || !preg_match("/^[a-zA-Z0-9-_*?!.,]*$/",$password) || !preg_match("/^[a-z0-9._@]*$/",$email)){
-			header("Location: index.php?player=invalid");
+	if(!preg_match("/^[a-zA-Z0-9_.]*$/",$name) || !preg_match("/^[a-zA-Z0-9-_*?!.,]*$/",$password) || !preg_match("/^[a-z0-9._@]*$/",$email)){
+		header("Location: ".$filePath."?".$fileName."=invalid");
 			exit();
 		}else{
 			
-			if(strlen($nick_name)>=60 || strlen($password)>=60 || strlen($email)>=80){
-				header("Location: index.php?player=overflow");
+			if(strlen($name)>=60 || strlen($password)>=60 || strlen($email)>=80){
+				header("Location: ".$filePath."?".$fileName."=overflow");
 				exit();
 			}else{
 				
@@ -29,12 +32,12 @@ if(empty($nick_name) || empty($password) || empty($email)){
 			$stmtlen = sqlsrv_num_rows($stmt); 
 			
 			if($stmtlen!=0){
-				header("Location: index.php?player=taken<br><button onclick='window.location.href=\"index.php\"'>Continuar</button>");
+				header("Location: ".$filePath."?".$fileName."=taken");
 				exit();
 				}else{
 			
 					//INSERT
-					$sql = "INSERT INTO player(nick_name, passwd, email, state) VALUES ('$nick_name','$password','$email',1)";
+					$sql = "INSERT INTO player(nick_name, passwd, email, state) VALUES ('$name','$password','$email',1)";
 					$params = array(1, "some data");
 
 					$stmt = sqlsrv_query( $conn, $sql, $params);
@@ -42,7 +45,7 @@ if(empty($nick_name) || empty($password) || empty($email)){
 					if( $stmt === false ) {
 						die( print_r( sqlsrv_errors(), true));
 					}else{
-						echo("Jogador criado com sucesso!");
+						header("Location: ".$filePath."?".$fileName."=sucess");
 					}
 				}
 		}
