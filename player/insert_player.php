@@ -3,7 +3,8 @@ include '../connect.php';
 include '../input_cleaner.php';
 
 $filePath = "../page_player.php";
-$fileName = "player";
+$fileName = "player"; 
+$tableName = $fileName;
 
 $name = ms_escape_string($_POST["name"]);
 $password = ms_escape_string($_POST["password"]);
@@ -37,7 +38,7 @@ if(empty($name) || empty($password) || empty($email)){
 				}else{
 			
 					//INSERT
-					$sql = "INSERT INTO player(nick_name, passwd, email, state) VALUES ('$name','$password','$email',1)";
+					$sql = "INSERT INTO $tableName (nick_name, passwd, email, state) VALUES ('$name','$password','$email',1)";
 					$params = array(1, "some data");
 
 					$stmt = sqlsrv_query( $conn, $sql, $params);
@@ -45,7 +46,7 @@ if(empty($name) || empty($password) || empty($email)){
 					if( $stmt === false ) {
 						die( print_r( sqlsrv_errors(), true));
 					}else{
-						header("Location: ".$filePath."?".$fileName."=sucess");
+						header("Location: ".$filePath."?".$fileName."=success");
 					}
 				}
 		}

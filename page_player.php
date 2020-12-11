@@ -50,5 +50,22 @@
 			<button type="submit" value="addInfo" name="addInfo" style="width:100%;">Adicionar</button> 
 		</form>
 	</div>
+
+	<div class="pc_forms pc_margin">
+		<h4>Modificar Informação do <?php echo($topic); ?></h4>
+		<form action="<?php echo($pathSufix); ?>modify_<?php echo($fileName);?>_info.php" method="post">
+			ID da Informação do <?php echo($topic); ?>: <input type="text" name="id" style="width:98%;"><br>
+			Info do <?php echo($topic); ?>: <input type="text" name="info" style="width:98%;"><br>
+			<button type="submit" value="modifyInfo" name="modifyInfo" style="width:100%;">Apagar</button> 
+		</form>
+	</div>
+
+	<div class="pc_forms pc_margin">
+		<h4>Apagar Informação do <?php echo($topic); ?></h4>
+		<form action="<?php echo($pathSufix); ?>delete_<?php echo($fileName);?>_info.php" method="post">
+			ID da Informação do <?php echo($topic); ?>: <input type="text" name="id" style="width:98%;"><br>
+			<button type="submit" value="removeInfo" name="removeInfo" style="width:100%;">Apagar</button> 
+		</form>
+	</div>
   
   <?php include 'htmldoc_end.php'; ?>

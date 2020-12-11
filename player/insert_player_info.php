@@ -1,51 +1,58 @@
 <?php
-include 'connect.php';
-include 'input_cleaner.php';
+include '../connect.php';
+include '../input_cleaner.php';
 
-$player_id = ms_escape_string($_POST["player_id"]);
-$player_info_id = ms_escape_string($_POST["player_info_id"]);
-$player_info = ms_escape_string($_POST["player_info"]);
+$filePath = "../page_player.php";
+$fileName = "player_info"; 
+$tableOneName = "player";
+$tableTwoName = "player_info_category";
+$tableThreeName = "player_info";
+
+
+$id = ms_escape_string($_POST["id"]);
+$info_id = ms_escape_string($_POST["info_id"]);
+$info = ms_escape_string($_POST["info"]);
  
-if(empty($player_id) || empty($player_info_id) || empty($player_info)){
-	header("Location: index.php?player_info=empty");
+if(empty($id) || empty($info_id) || empty($info)){
+	header("Location: ".$filePath."?".$fileName."=empty");
 	exit();
 }else{
  
-	if(!preg_match("/^[0-9]*$/",$player_id) || !preg_match("/^[0-9]*$/",$player_info_id) || !preg_match("/^[a-zA-Z0-9., _@!?]*$/",$player_info)){
-			header("Location: index.php?player_info=invalid");
+	if(!preg_match("/^[0-9]*$/",$id) || !preg_match("/^[0-9]*$/",$info_id) || !preg_match("/^[a-zA-Z0-9., _@!?]*$/",$info)){
+		header("Location: ".$filePath."?".$fileName."=invalid");
 			exit();
 		}else{
 			
-			if(strlen($player_id)>=11 || strlen($player_info_id)>=11 || strlen($player_info)>=120){
-				header("Location: index.php?player_info=overflow");
+			if(strlen($id)>=11 || strlen($info_id)>=11 || strlen($info)>=120){
+				header("Location: ".$filePath."?".$fileName."=overflow");
 				exit();
 			}else{
 				
 			//CHECK IF BOTH ELEMENTS REGISTRIES EXIST	
-			$sql = "SELECT id FROM player WHERE id='$player_id'";
+			$sql = "SELECT id FROM $tableOneName WHERE id='$id'";
 			$params = array();
 			$options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
 			$stmt = sqlsrv_query( $conn, $sql, $params, $options);
 			$stmtlen = sqlsrv_num_rows($stmt); 
 			
 			if($stmtlen === 0){
-				header("Location: index.php?player_info=player_id_null");
+				header("Location: ".$filePath."?".$fileName."=id_null");
 				exit();
 			}else{
 					
-				$sql = "SELECT id FROM player_info_category WHERE id='$player_info_id'";
+				$sql = "SELECT id FROM $tableTwoName WHERE id='$info_id'";
 				$params = array();
 				$options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
 				$stmt = sqlsrv_query( $conn, $sql, $params, $options);
 				$stmtlen = sqlsrv_num_rows($stmt); 
 			
 				if($stmtlen === 0){
-					header("Location: index.php?player_info=player_info_id_null");
+					header("Location: ".$filePath."?".$fileName."=info_id_null");
 					exit();
 				}else{	
 				
 					//INSERT
-					$sql = "INSERT INTO player_info(player_id, player_info_id, info) VALUES ('$player_id','$player_info_id','$player_info')";
+					$sql = "INSERT INTO $tableThreeName (player_id, player_info_id, info) VALUES ('$id','$info_id','$info')";
 					$params = array(1, "some data");
 
 					$stmt = sqlsrv_query( $conn, $sql, $params);
@@ -53,7 +60,7 @@ if(empty($player_id) || empty($player_info_id) || empty($player_info)){
 					if( $stmt === false ) {
 					die( print_r( sqlsrv_errors(), true));
 					}else{
-						echo("Informação de jogador criado com sucesso!<br><button onclick='window.location.href=\"index.php\"'>Continuar</button>");
+						header("Location: ".$filePath."?".$fileName."=success");
 					}
 				}
 			}	
