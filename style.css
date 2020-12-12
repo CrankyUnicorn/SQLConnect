@@ -2,6 +2,7 @@ body{
 	font-family: "Lato", sans-serif;
 	padding: 0px;
 	margin: 0px;
+	margin-top: 5px;
 	float:right;
 	width: 85%;
 	background-color: #666666;
@@ -13,12 +14,35 @@ td{
 	padding-right: 10px;
 }
 
+h4{
+	margin: 5px 0 8px 0;
+}
+
+button{
+	padding: 0;
+	margin: 8px 0 8px 0;
+	border: none;
+	background: none;
+	background-color: #666;
+}
+
+.pc_topbar{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	height: 5px;
+	background-color: #FFF;
+	transition: 0.5s;
+}
+
 .pc_menubutton{
 	position: fixed;
 	top: 0;
 	left: 0;
 	bottom: 0;
-	z-index: 2;
+	z-index: 4;
 	width: 1%;
 	background-color: #333333;
 }
@@ -29,18 +53,28 @@ td{
 	top: 0;
 	left: 0;
 	bottom: 0;
-	z-index: 1;
-	padding-top:60px;
+	z-index: 3;
+	padding-top:30px;
 	width: 15%;
 	overflow-x: hidden;
 	transition: 0.5s;
 	background-color: #222222;
 }
 
+.pc_sidebar .pc_marker {
+	padding: 0;
+	margin-top: 10px;
+	float: left;
+	display: inline;
+	height: 20px;
+	width: 18px;
+	transition: 0.3s;
+}
+
 .pc_sidebar a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 20px;
   color: #818181;
   display: block;
   transition: 0.3s;
@@ -55,7 +89,7 @@ td{
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-between;
-	background-color: #DDD;
+	background-color: #222222;
 	padding-top: 1px;
 	padding-right: 5px;
 	padding-bottom: 10px;
@@ -101,6 +135,14 @@ td{
 .pc_margin{
 	border: 2px solid #777;
 	padding: 10px;
+}
+
+.pc_evenColor{
+	background-color: #666;
+}
+
+.pc_oddColor{
+	background-color: #888;
 }
 
 .pc_magenta{

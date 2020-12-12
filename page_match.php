@@ -1,54 +1,73 @@
 <?php include 'htmldoc_start.php'; ?>
 
-		<?php include 'view_character_match.php'; ?>
-		<?php include 'view_match.php'; ?>
-		<?php include 'view_match_info_category.php'; ?>
-		<?php include 'view_match_info.php'; ?>
+	<?php 
+	//hope you just to need to change this
+	$fileName = "match"; 
+	$pathSufix = $fileName."/"; 
+	$topic = "Partida"; 
+	?>
 
-	</div>
-	<div class="pc_forms_holder">
+<div class="pc_topbar pc_orange"></div>
+<!--main content-->
+<div id="pc_forms_holder" class="pc_forms_holder">
+
+	<?php include $pathSufix.'view_'.$fileName.'.php'; ?>
+	<?php include $pathSufix.'view_'.$fileName.'_info_category.php'; ?>
+	<?php include $pathSufix.'view_'.$fileName.'_info.php'; ?>
+
+</div>
+<div class="pc_forms_holder">
+
 
 	<div class="pc_forms pc_margin">
-		<h4>Adicionar Partida</h4>
-		<form action="insert_match.php" method="post">
-			Nome da Partida: <input type="text" name="match_name" style="width:98%;"><br>
-			<button type="submit" value="addMatch" name="addMatch" style="width:100%;">Adicionar</button> 
+		<h4>Adicionar <?php echo($topic); ?></h4>
+		<form action="<?php echo($pathSufix);?>insert_<?php echo($fileName);?>.php" method="post">
+			Nome: <input type="text" name="name" style="width:98%;"><br>
+			<button type="submit" value="add" name="add" style="width:100%;">Adicionar</button> 
 		</form>
 	</div>
 
 	<div class="pc_forms pc_margin">
-		<h4>Alterar Estado da Partida</h4>
-		<form action="state_match.php" method="post">
-			ID da Partida: <input type="text" name="match_id" style="width:98%;"><br>
-			<button type="submit" value="stateMatch" name="stateMatch" style="width:100%;">Modificar</button> 
+		<h4>Alterar Estado de <?php echo($topic); ?></h4>
+		<form action="<?php echo($pathSufix); ?>state_<?php echo($fileName);?>.php" method="post">
+			ID da <?php echo($topic); ?>: <input type="text" name="id" style="width:98%;"><br>
+			<button type="submit" value="state" name="state" style="width:100%;">Modificar</button> 
 		</form>
-	</div>	
+	</div>
 
 	<div class="pc_forms pc_margin">
-		<h4>Adicionar Categoria em Partida</h4>
-		<form action="insert_match_info_category.php" method="post">
+		<h4>Adicionar Categoria em <?php echo($topic); ?></h4>
+		<form action="<?php echo($pathSufix); ?>insert_<?php echo($fileName);?>_info_category.php" method="post">
 			Nome da Categoria: <input type="text" name="info_category" style="width:98%;"><br>
-			<button type="submit" value="addMatchCategory" name="addMatchCategory" style="width:100%;">Adicionar</button> 
+			<button type="submit" value="addCategory" name="addCategory" style="width:100%;">Adicionar</button> 
 		</form>
 	</div>
 
 	<div class="pc_forms pc_margin">
-		<h4>Adicionar Informação ao Partida</h4>
-		<form action="insert_match_info.php" method="post">
-			ID do Partida: <input type="text" name="match_id" style="width:98%;"><br>
-			ID da Categoria: <input type="text" name="match_info_id" style="width:98%;"><br>
-			Informação: <input type="text" name="match_info" style="width:98%;"><br>
-			<button type="submit" value="addMatchInfo" name="addMatchInfo" style="width:100%;">Adicionar</button> 
+		<h4>Adicionar Informação ao <?php echo($topic); ?></h4>
+		<form action="<?php echo($pathSufix); ?>insert_<?php echo($fileName);?>_info.php" method="post">
+			ID do <?php echo($topic); ?>: <input type="text" name="id" style="width:98%;"><br>
+			ID da Categoria: <input type="text" name="info_id" style="width:98%;"><br>
+			Informação: <input type="text" name="info" style="width:98%;"><br>
+			<button type="submit" value="addInfo" name="addInfo" style="width:100%;">Adicionar</button> 
 		</form>
 	</div>
 
 	<div class="pc_forms pc_margin">
-		<h4>Adicionar Personagem a Partida</h4>
-		<form action="insert_character_match.php" method="post">
-			ID da Personagem: <input type="text" name="character_id" style="width:98%;"><br>
-			ID do Match: <input type="text" name="match_id" style="width:98%;"><br>
-			<button type="submit" value="addCharacterMatch" name="addCharacterMatch" style="width:100%;">Adicionar</button> 
+		<h4>Modificar Informação do <?php echo($topic); ?></h4>
+		<form action="<?php echo($pathSufix); ?>modify_<?php echo($fileName);?>_info.php" method="post">
+			ID da Informação do <?php echo($topic); ?>: <input type="text" name="id" style="width:98%;"><br>
+			Info do <?php echo($topic); ?>: <input type="text" name="info" style="width:98%;"><br>
+			<button type="submit" value="modifyInfo" name="modifyInfo" style="width:100%;">Apagar</button> 
 		</form>
 	</div>
 
+	<div class="pc_forms pc_margin">
+		<h4>Apagar Informação do <?php echo($topic); ?></h4>
+		<form action="<?php echo($pathSufix); ?>delete_<?php echo($fileName);?>_info.php" method="post">
+			ID da Informação do <?php echo($topic); ?>: <input type="text" name="id" style="width:98%;"><br>
+			<button type="submit" value="removeInfo" name="removeInfo" style="width:100%;">Apagar</button> 
+		</form>
+	</div>
+  
   <?php include 'htmldoc_end.php'; ?>

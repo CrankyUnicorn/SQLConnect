@@ -8,11 +8,11 @@
 
 <?php
 
-	$title = "Partidas";
+	$title = "Veículos";
 	//$filePath = "../page_player.php";
 	//$fileName = "view_player";
-	$tableOneName = "match";
-	$columnOneName = "match_name";
+	$tableOneName = "vehicle";
+	$columnOneName = "vehicle_name";
 	//there is an extra parameter 'nick_name' to be changed by hand in line 24 and 29
 
 	$rowColorState = 0;

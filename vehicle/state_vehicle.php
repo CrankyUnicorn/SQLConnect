@@ -2,9 +2,9 @@
 include '../connect.php';
 include '../input_cleaner.php';
 
-$filePath = "../page_character.php";
-$fileName = "state_character"; 
-$tableName = "character";
+$filePath = "../page_vehicle.php";
+$fileName = "state_vehicle"; 
+$tableName = "vehicle";
 
 $id = ms_escape_string($_POST["id"]);
  

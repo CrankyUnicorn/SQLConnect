@@ -1,36 +1,50 @@
 <?php 
-	if(isset($_POST['viewCharacter'])){
+	if(isset($_POST['view'])){
 		include 'htmldoc_start.php';
 	}
 ?>
+
 <?php include 'connect.php'; ?>
+
 <?php
 
-	$sql = "SELECT * FROM character";
+	$title = "Personagens";
+	//$filePath = "../page_player.php";
+	//$fileName = "view_player";
+	$tableOneName = "character";
+	$columnOneName = "character_name";
+	//there is an extra parameter 'nick_name' to be changed by hand in line 24 and 29
+
+	$rowColorState = 0;
+	$rowColor = "pc_evenColor";
+
+	$sql = "SELECT * FROM $tableOneName";
 	$params = array(1, "some data");
 
 	$stmt = sqlsrv_query( $conn, $sql, $params);
-	$stmtlen = sqlsrv_num_rows($stmt); 
+		
+	echo "<div class='pc_lists pc_margin'><h4 class='pc_center'>".$title."</h4><table class='pc_center pc_margin'>";
+	echo "<tr class=".$rowColor."><th>ID</th><th>Nome</th><th>Estado</th></tr>";
 	
-	if($stmtlen === 0){
-		header("Location: index.php?character=no_results");
-		exit();
-	}else{
-		
-		echo "<div class='pc_lists pc_margin pc_orange'><h4 class='pc_center'>Personagens</h4><table class='pc_center pc_margin'>";
-		echo "<tr><th>ID</th><th>Nome</th><th>Criado</th><th>Estado</th></tr>";
-		
+	if($stmt != false){
 		while($row = sqlsrv_fetch_array($stmt)){
+					
+			if($rowColorState===0){
+				$rowColor = "pc_oddColor";
+				$rowColorState = 1;
+			}else{
+				$rowColor = "pc_evenColor";
+				$rowColorState = 0;
+			}
 
-			echo "<tr><td>".$row['id']."</td><td>".$row['character_name']."</td><td>".date('m-d-Y | H:i:s',($row['character_creation']->getTimestamp()))."</td><td>".$row['state']."</td></tr>";
+			echo "<tr class=".$rowColor."><td>".$row['id']."</td><td>".$row[$columnOneName]."</td><td>".$row['state']."</td></tr>";
 		}
-		
-		echo "</table></div>";
-	}
+	}	
+	echo "</table></div>";
 	
 ?>
 <?php 
-	if(isset($_POST['viewCharacter'])){
+	if(isset($_POST['view'])){
 		include 'htmldoc_end.php';
 	}
 ?>

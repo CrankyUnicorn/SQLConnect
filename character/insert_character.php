@@ -1,35 +1,53 @@
 <?php
-include 'connect.php';
-include 'input_cleaner.php';
+include '../connect.php';
+include '../input_cleaner.php';
 
-$character_name = ms_escape_string($_POST["character_name"]);
+$filePath = "../page_character.php";
+$fileName = "character"; 
+$tableName = $fileName;
+$columnOneName = "character_name";
+
+$name = ms_escape_string($_POST["name"]);
  
-if(empty($character_name)){
-	header("Location: index.php?character=empty");
+if(empty($name)){
+	header("Location: ".$filePath."?".$fileName."=empty");
 	exit();
 }else{
  
-	if(!preg_match("/^[a-zA-Z0-9_-]*$/",$character_name)){
-			header("Location: index.php?character=invalid");
+	if(!preg_match("/^[a-zA-Z0-9_.]*$/",$name)){
+		header("Location: ".$filePath."?".$fileName."=invalid");
 			exit();
 		}else{
 			
-			if(strlen($character_name)>=60){
-				header("Location: index.php?character=overflow");
+			if(strlen($name)>=60){
+				header("Location: ".$filePath."?".$fileName."=overflow");
 				exit();
 			}else{
-		
-				//INSERT
-				$sql = "INSERT INTO character(character_name,state) VALUES ('$character_name',1)";
-				$params = array(1, "some data");
+				
+			//CHECK EMAIL IS IN USE ALREADY	
+			$sql = "SELECT email FROM player WHERE email='$email'";
+			$params = array(1, "some data");
 
-				$stmt = sqlsrv_query( $conn, $sql, $params);
+			$stmt = sqlsrv_query( $conn, $sql, $params);
+			$stmtlen = sqlsrv_num_rows($stmt); 
+			
+			if($stmtlen!=0){
+				header("Location: ".$filePath."?".$fileName."=taken");
+				exit();
+				}else{
+			
+					//INSERT
+					$sql = "INSERT INTO $tableName ($columnOneName, state) VALUES ('$name',1)";
+					$params = array(1, "some data");
 
-				if( $stmt === false ) {
-				die( print_r( sqlsrv_errors(), true));
-			}else{
-				echo("Personagem inserido com sucesso!<br><button onclick='window.location.href=\"index.php\"'>Continuar</button>");
-			}
+					$stmt = sqlsrv_query( $conn, $sql, $params);
+
+					if( $stmt === false ) {
+						die( print_r( sqlsrv_errors(), true));
+					}else{
+						header("Location: ".$filePath."?".$fileName."=success");
+					}
+				}
 		}
 	}		
 }

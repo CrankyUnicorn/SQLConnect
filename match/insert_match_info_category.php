@@ -1,38 +1,42 @@
 <?php
-include 'connect.php';
-include 'input_cleaner.php';
+include '../connect.php';
+include '../input_cleaner.php';
+
+$filePath = "../page_match.php";
+$fileName = "match_info_category"; 
+$tableName = $fileName;
 
 $info_category = ms_escape_string($_POST["info_category"]);
  
 if(empty($info_category)){
-	header("Location: index.php?match_info_category=empty");
+	header("Location: ".$filePath."?".$fileName."=empty");
 	exit();
 }else{
  
 	if(!preg_match("/^[a-zA-Z0-9_.]*$/",$info_category)){
-			header("Location: index.php?match_info_category=invalid");
+		header("Location: ".$filePath."?".$fileName."=invalid");
 			exit();
 		}else{
 			
 			if(strlen($info_category)>=60){
-				header("Location: index.php?match_info_category=overflow");
+				header("Location: ".$filePath."?".$fileName."=overflow");
 				exit();
 			}else{
 				
-			//CHECK NICK NAME IS IN USE ALREADY	
-			$sql = "SELECT * FROM match_info_category WHERE info_category='$info_category'";
+			//CHECK CATEGORY IS IN USE ALREADY	
+			$sql = "SELECT * FROM $tableName WHERE info_category = '$info_category'";
 			$params = array();
-			$options = array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
+			$options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
 			$stmt = sqlsrv_query( $conn, $sql, $params, $options);
-			$stmtlen = sqlsrv_num_rows($stmt); 
+			$stmtlen = sqlsrv_num_rows($stmt);  
 			
-			if($stmtlen != 0){
-				header("Location: index.php?match_info_category=taken");
+			if($stmtlen!=0){
+				header("Location: ".$filePath."?".$fileName."=taken");
 				exit();
-			}else{
+				}else{
 			
 					//INSERT
-					$sql = "INSERT INTO match_info_category(info_category) VALUES ('$info_category')";
+					$sql = "INSERT INTO $tableName(info_category) VALUES ('$info_category')";
 					$params = array(1, "some data");
 
 					$stmt = sqlsrv_query( $conn, $sql, $params);
@@ -40,9 +44,9 @@ if(empty($info_category)){
 					if( $stmt === false ) {
 						die( print_r( sqlsrv_errors(), true));
 					}else{
-						echo("Categoria de partida criado com sucesso!<br><button onclick='window.location.href=\"index.php\"'>Continuar</button>");
+						header("Location: ".$filePath."?".$fileName."=success");
 					}
-			}
+				}
 		}
 	}		
 }

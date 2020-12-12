@@ -5,6 +5,8 @@ include '../input_cleaner.php';
 $filePath = "../page_player.php";
 $fileName = "player"; 
 $tableName = $fileName;
+$columnOneName = "nick_name";
+//rename variables at line 43
 
 $name = ms_escape_string($_POST["name"]);
 $password = ms_escape_string($_POST["password"]);
@@ -38,7 +40,7 @@ if(empty($name) || empty($password) || empty($email)){
 				}else{
 			
 					//INSERT
-					$sql = "INSERT INTO $tableName (nick_name, passwd, email, state) VALUES ('$name','$password','$email',1)";
+					$sql = "INSERT INTO $tableName ($columnOneName, passwd, email, state) VALUES ('$name','$password','$email',1)";
 					$params = array(1, "some data");
 
 					$stmt = sqlsrv_query( $conn, $sql, $params);

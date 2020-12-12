@@ -2,13 +2,13 @@
 include '../connect.php';
 include '../input_cleaner.php';
 
-$filePath = "../page_character.php";
-$fileName = "character_info"; 
-$tableOneName = "character";
-$columnOneName = "character_id";
-$columnTwoName = "character_info_id";
-$tableTwoName = "character_info_category";
-$tableThreeName = "character_info";
+$filePath = "../page_vehicle.php";
+$fileName = "vehicle_info"; 
+$tableOneName = "vehicle";
+$columnOneName = "vehicle_id";
+$columnTwoName = "vehicle_info_id";
+$tableTwoName = "vehicle_info_category";
+$tableThreeName = "vehicle_info";
 
 $id = ms_escape_string($_POST["id"]);
 $info_id = ms_escape_string($_POST["info_id"]);

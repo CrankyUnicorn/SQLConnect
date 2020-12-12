@@ -6,15 +6,15 @@
 <?php include 'connect.php'; ?>
 <?php
 
-	$title = "Partida";
+	$title = "Veículos";
 	//$filePath = "../page_player.php";
 	//$fileName = "view_player_info";
-	$tableOneName = "match_info";
-	$columnOneName = "match_id"; 
-	$columnTwoName = "match_info_id"; 
-	$tableTwoName = "match";
-	$columnTableTwoName = "match_name";
-	$tableThreeName = "match_info_category";
+	$tableOneName = "vehicle_info";
+	$columnOneName = "vehicle_id"; 
+	$columnTwoName = "vehicle_info_id"; 
+	$tableTwoName = "vehicle";
+	$columnTableTwoName = "vehicle_name";
+	$tableThreeName = "vehicle_info_category";
 	//there is an extra parameter 'nick_name' to be changed by hand in line 57
 
 	$rowColorState = 0;

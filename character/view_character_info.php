@@ -1,46 +1,68 @@
 <?php 
-	if(isset($_POST['viewCharacterInfo'])){
+	if(isset($_POST['viewInfo'])){
 		include 'htmldoc_start.php';
 	}
 ?>
 <?php include 'connect.php'; ?>
 <?php
 
-	$sql = "SELECT * FROM character_info";
+	$title = "Personagem";
+	//$filePath = "../page_player.php";
+	//$fileName = "view_player_info";
+	$tableOneName = "character_info";
+	$columnOneName = "character_id"; 
+	$columnTwoName = "character_info_id"; 
+	$tableTwoName = "character";
+	$columnTableTwoName = "character_name";
+	$tableThreeName = "character_info_category";
+	//there is an extra parameter 'nick_name' to be changed by hand in line 57
+
+	$rowColorState = 0;
+	$rowColor = "pc_evenColor";
+
+	$sql = "SELECT * FROM $tableOneName";
 	$params = array(1, "some data");
 
 	$stmt = sqlsrv_query( $conn, $sql, $params);
 	
-		echo "<div class='pc_lists pc_margin pc_orange'><h4 class='pc_center'>Informações das Personagens</h4><table class='pc_center pc_margin'>";
-		echo "<tr><th>ID Personagem</th><th>ID Categoria</th><th>Valor</th></tr>";
-	
-	if($stmt != 0 || $stmt != null){	
+		
+		echo "<div class='pc_lists pc_margin'><h4 class='pc_center'>Informação dos ".$title."</h4><table class='pc_center pc_margin'>";
+		echo "<tr class=".$rowColor."><th>ID</th><th>ID ".$title."es</th><th>ID Categoria</th><th>Valor</th></tr>";
+		
+	if($stmt != false){
+		
 		while($row = sqlsrv_fetch_array($stmt)){
 			
 			//name of the first argument			
-			$sql = "SELECT character_name FROM character WHERE character.id='".$row['character_id']."';";
+			$sql = "SELECT * FROM $tableTwoName WHERE $tableTwoName.id='".$row[$columnOneName]."';";
 			$params = array(1, "some data");
 
 			$stmt_argOne = sqlsrv_query( $conn, $sql, $params);
 			$row_argOne = sqlsrv_fetch_array($stmt_argOne);
 		
 			//name of the second argument
-			$sql = "SELECT info_category FROM character_info_category WHERE character_info_category.id='".$row['character_info_id']."';";
+			$sql = "SELECT * FROM $tableThreeName WHERE $tableThreeName.id='".$row[$columnTwoName]."';";
 			$params = array(1, "some data");
 
 			$stmt_argTwo = sqlsrv_query( $conn, $sql, $params);
 			$row_argTwo = sqlsrv_fetch_array($stmt_argTwo);
 		
-			echo "<tr><td>".$row['character_id']."=".$row_argOne['character_name']."</td><td>".$row['character_info_id']."=".$row_argTwo['info_category']."</td><td>".$row['info']."</td></tr>";
-				
+			if($rowColorState===0){
+				$rowColor = "pc_oddColor";
+				$rowColorState = 1;
+			}else{
+				$rowColor = "pc_evenColor";
+				$rowColorState = 0;
+			}
+
+			echo "<tr class=".$rowColor."><td>".$row['id']."</td><td>".$row[$columnOneName]."=".$row_argOne[$columnTableTwoName]."</td><td>".$row[$columnTwoName]."=".$row_argTwo['info_category']."</td><td>".$row['info']."</td></tr>";
 		}
 	}
-		
-		echo "</table></div>";
+	echo "</table></div>";
 	
 ?>
 <?php 
-	if(isset($_POST['viewCharacterInfo'])){
+	if(isset($_POST['viewInfo'])){
 		include 'htmldoc_end.php';
 	}
 ?>

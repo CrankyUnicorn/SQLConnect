@@ -14,14 +14,13 @@
 <!--sidebar-->
 <div class="pc_menubutton" onclick="toggleNav()"></div>
 <div id="pc_sidebar" class="pc_sidebar">
-  <a href="page_player.php">Jogadores</a>
-  <a href="page_character.php">Personagens</a>
-  <a href="page_match.php">Partidas</a>
-  <a href="#">Veículos</a>
-  <a href="#">Mapa</a>
-  <a href="#">Células</a>
-  <a href="#">Caminhos</a>
-  <a href="#">Pontos</a>
+  <img src="images/logo_white.png" alt="Logo" width="170px" style="padding: 0 0 8px 18px; opacity:60%;"><br>
+  <div class="pc_marker pc_magenta"></div><a href="page_player.php">Jogadores</a>
+  <div class="pc_marker pc_red"></div><a href="page_character.php">Personagens</a>
+  <div class="pc_marker pc_orange"></div><a href="page_match.php">Partidas</a>
+  <div class="pc_marker pc_yellow"></div><a href="#">Veículos</a>
+  <div class="pc_marker pc_lightgreen"></div><a href="#">Mapa</a>
+  <div class="pc_marker pc_green"></div><a href="#">Células</a>
+  <div class="pc_marker pc_teal"></div><a href="#">Caminhos</a>
+  <div class="pc_marker pc_lightblue"></div><a href="#">Pontos</a>
 </div>
-<!--main content-->
-<div id="pc_forms_holder" class="pc_forms_holder">

@@ -2,8 +2,8 @@
 include '../connect.php';
 include '../input_cleaner.php';
 
-$filePath = "../page_character.php";
-$fileName = "character_info_category"; 
+$filePath = "../page_vehicle.php";
+$fileName = "vehicle_info_category"; 
 $tableName = $fileName;
 
 $info_category = ms_escape_string($_POST["info_category"]);

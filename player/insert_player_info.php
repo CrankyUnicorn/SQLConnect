@@ -5,6 +5,8 @@ include '../input_cleaner.php';
 $filePath = "../page_player.php";
 $fileName = "player_info"; 
 $tableOneName = "player";
+$columnOneName = "player_id";
+$columnTwoName = "player_info_id";
 $tableTwoName = "player_info_category";
 $tableThreeName = "player_info";
 
@@ -52,7 +54,7 @@ if(empty($id) || empty($info_id) || empty($info)){
 				}else{	
 				
 					//INSERT
-					$sql = "INSERT INTO $tableThreeName (player_id, player_info_id, info) VALUES ('$id','$info_id','$info')";
+					$sql = "INSERT INTO $tableThreeName ($columnOneName, $columnTwoName, info) VALUES ('$id','$info_id','$info')";
 					$params = array(1, "some data");
 
 					$stmt = sqlsrv_query( $conn, $sql, $params);

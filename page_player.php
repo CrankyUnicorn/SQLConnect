@@ -7,6 +7,10 @@
 	$topic = "Jogador"; 
 	?>
 
+<div class="pc_topbar pc_magenta"></div>
+<!--main content-->
+<div id="pc_forms_holder" class="pc_forms_holder">
+
 	<?php include $pathSufix.'view_'.$fileName.'.php'; ?>
 	<?php include $pathSufix.'view_'.$fileName.'_info_category.php'; ?>
 	<?php include $pathSufix.'view_'.$fileName.'_info.php'; ?>
