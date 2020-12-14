@@ -1,3 +1,16 @@
+:root {
+	--magenta:#fb5e92;
+	--red:#ff4848;
+	--orange:#ffae51;
+	--yellow:#fff066;
+	--lightgreen:#b6ff62;
+	--green:#48ff51;
+	--teal:#52ffd4;
+	--lightblue:#79a5ff;
+	--blue:#3e3eff;
+	--purple:#9f72f8;
+}
+
 body{
 	font-family: "Lato", sans-serif;
 	padding: 0px;
@@ -14,8 +27,8 @@ td{
 	padding-right: 10px;
 }
 
-h4{
-	margin: 5px 0 8px 0;
+h4, h3{
+	margin: 20px 0 8px 0;
 }
 
 button{
@@ -48,6 +61,10 @@ button{
 }
 
 
+.pc_sidebar::-webkit-scrollbar{
+	display: none;
+}
+
 .pc_sidebar{
 	position: fixed;
 	top: 0;
@@ -57,6 +74,9 @@ button{
 	padding-top:30px;
 	width: 15%;
 	overflow-x: hidden;
+	/* hide scrool bars */
+	-ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 	transition: 0.5s;
 	background-color: #222222;
 }
@@ -64,10 +84,11 @@ button{
 .pc_sidebar .pc_marker {
 	padding: 0;
 	margin-top: 10px;
+	margin-left: 14px;
 	float: left;
 	display: inline;
 	height: 20px;
-	width: 18px;
+	width: 6px;
 	transition: 0.3s;
 }
 
@@ -146,41 +167,74 @@ button{
 }
 
 .pc_magenta{
-	background-color: #CC6688;
+	background-color: var(--magenta);
 }
 
 .pc_red{
-	background-color: #FF6666;
+	background-color: var(--red);
 }
 
 .pc_orange{
-	background-color: #CC8866;
+	background-color: var(--orange);
 }
 
 .pc_yellow{
-	background-color: #CCCC66;
+	background-color: var(--yellow);
 }
 
 .pc_lightgreen{
-	background-color: #88CC66;
+	background-color: var(--lightgreen);
 }
 
 .pc_green{
-	background-color: #66FF66;
+	background-color:var(--green);
 }
 
 .pc_teal{
-	background-color: #66CC88;
+	background-color:var(--teal);
 }
 
 .pc_lightblue{
-	background-color: #6688CC;
+	background-color: var(--lightblue);
 }
 
 .pc_blue{
-	background-color: #6666FF;
+	background-color: var(--blue);
 }
 
 .pc_purple{
-	background-color: #8866CC;
+	background-color: var(--purple)
+	;
+}
+
+.pc_magenta_red{
+	background: linear-gradient(90deg, var(--magenta) 50%, var(--red) 50%);
+}
+
+.pc_red_orange{
+	background: linear-gradient(90deg, var(--red) 50%,var(--orange) 50%);
+}
+
+.pc_red_yellow{
+	background: linear-gradient(90deg, var(--red) 50%, var(--yellow) 50%);
+}
+
+.pc_orange_yellow{
+	background: linear-gradient(90deg, var(--orange) 50%, var(--yellow) 50%);
+}
+
+.pc_yellow_lightgreen{
+	background: linear-gradient(90deg, var(--yellow) 50%, var(--lightgreen) 50%);
+}
+
+.pc_lightgreen_green{
+	background: linear-gradient(90deg, var(--lightgreen) 50%, var(--green) 50%);
+}
+
+.pc_red_teal{
+	background: linear-gradient(90deg, var(--red) 50%, var(--teal) 50%);
+}
+
+.pc_teal_lightblue{
+	background: linear-gradient(90deg, var(--teal) 50%, var(--lightblue) 50%);
 }
