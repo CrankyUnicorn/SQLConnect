@@ -2,10 +2,10 @@
 include '../connect.php';
 include '../input_cleaner.php';
 
-$filePath = "../page_match.php";
-$fileName = "match"; 
+$filePath = "../page_map.php";
+$fileName = "map"; 
 $tableName = $fileName;
-$columnOneName = "match_name";
+$columnOneName = "map_name";
 
 $name = ms_escape_string($_POST["name"]);
  
@@ -25,7 +25,7 @@ if(empty($name)){
 			}else{
 				
 			//CHECK
-			$sql = "SELECT * FROM match";
+			$sql = "SELECT * FROM map";
 			$params = array();
 			$options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
 			$stmt = sqlsrv_query( $conn, $sql, $params, $options);

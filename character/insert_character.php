@@ -24,11 +24,11 @@ if(empty($name)){
 				exit();
 			}else{
 				
-			//CHECK EMAIL IS IN USE ALREADY	
-			$sql = "SELECT email FROM player WHERE email='$email'";
-			$params = array(1, "some data");
-
-			$stmt = sqlsrv_query( $conn, $sql, $params);
+			//CHECK
+			$sql = "SELECT * FROM character";
+			$params = array();
+			$options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
+			$stmt = sqlsrv_query( $conn, $sql, $params, $options);
 			$stmtlen = sqlsrv_num_rows($stmt); 
 			
 			if($stmtlen!=0){

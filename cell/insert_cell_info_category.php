@@ -2,34 +2,33 @@
 include '../connect.php';
 include '../input_cleaner.php';
 
-$filePath = "../page_match.php";
-$fileName = "match"; 
+$filePath = "../page_cell.php";
+$fileName = "cell_info_category"; 
 $tableName = $fileName;
-$columnOneName = "match_name";
 
-$name = ms_escape_string($_POST["name"]);
+$info_category = ms_escape_string($_POST["info_category"]);
  
-if(empty($name)){
+if(empty($info_category)){
 	header("Location: ".$filePath."?".$fileName."=empty");
 	exit();
 }else{
  
-	if(!preg_match("/^[a-zA-Z0-9_.]*$/",$name)){
+	if(!preg_match("/^[a-zA-Z0-9_.]*$/",$info_category)){
 		header("Location: ".$filePath."?".$fileName."=invalid");
 			exit();
 		}else{
 			
-			if(strlen($name)>=60){
+			if(strlen($info_category)>=60){
 				header("Location: ".$filePath."?".$fileName."=overflow");
 				exit();
 			}else{
 				
-			//CHECK
-			$sql = "SELECT * FROM match";
+			//CHECK CATEGORY IS IN USE ALREADY	
+			$sql = "SELECT * FROM $tableName WHERE info_category = '$info_category'";
 			$params = array();
 			$options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
 			$stmt = sqlsrv_query( $conn, $sql, $params, $options);
-			$stmtlen = sqlsrv_num_rows($stmt); 
+			$stmtlen = sqlsrv_num_rows($stmt);  
 			
 			if($stmtlen!=0){
 				header("Location: ".$filePath."?".$fileName."=taken");
@@ -37,7 +36,7 @@ if(empty($name)){
 				}else{
 			
 					//INSERT
-					$sql = "INSERT INTO $tableName ($columnOneName, state) VALUES ('$name',1)";
+					$sql = "INSERT INTO $tableName(info_category) VALUES ('$info_category')";
 					$params = array(1, "some data");
 
 					$stmt = sqlsrv_query( $conn, $sql, $params);

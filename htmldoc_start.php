@@ -18,9 +18,9 @@
   <div class="pc_marker pc_magenta"></div><a href="page_player.php">Jogadores</a>
   <div class="pc_marker pc_red"></div><a href="page_character.php">Personagens</a>
   <div class="pc_marker pc_orange"></div><a href="page_match.php">Partidas</a>
-  <div class="pc_marker pc_yellow"></div><a href="#">Veículos</a>
-  <div class="pc_marker pc_lightgreen"></div><a href="#">Mapa</a>
-  <div class="pc_marker pc_green"></div><a href="#">Células</a>
-  <div class="pc_marker pc_teal"></div><a href="#">Caminhos</a>
-  <div class="pc_marker pc_lightblue"></div><a href="#">Pontos</a>
+  <div class="pc_marker pc_yellow"></div><a href="page_vehicle.php">Veículos</a>
+  <div class="pc_marker pc_lightgreen"></div><a href="page_map.php">Mapa</a>
+  <div class="pc_marker pc_green"></div><a href="page_cell.php">Células</a>
+  <div class="pc_marker pc_teal"></div><a href="page_path.php">Caminhos</a>
+  <div class="pc_marker pc_lightblue"></div><a href="page_point.php">Pontos</a>
 </div>
