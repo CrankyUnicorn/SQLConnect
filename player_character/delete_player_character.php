@@ -2,9 +2,9 @@
 include '../connect.php';
 include '../input_cleaner.php';
 
-$filePath = "../page_point.php";
-$fileName = "delete_point"; 
-$tableName = "point";
+$filePath = "../page_player_character.php";
+$fileName = "delete_player_character"; 
+$tableName = "player_character";
 
 $id = ms_escape_string($_POST["id"]);
  

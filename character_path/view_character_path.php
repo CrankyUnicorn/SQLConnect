@@ -8,9 +8,9 @@
 
 <?php
 
-	$title = "Personagens de Jogadores";
-	$keywordOne = "player";
-	$keywordTwo = "character";
+	$title = "Caminhos das Personagens";
+	$keywordOne = "character";
+	$keywordTwo = "path";
 
 	//$filePath = "../page_player.php";
 	//$fileName = "view_player";
@@ -19,7 +19,7 @@
 	$columnTwoName = $keywordTwo."_id";
 
 	$tableOneName = $keywordOne;
-	$columnTableOneName = "nick_name"; // replace this on other folder that fit the standard
+	$columnTableOneName = $keywordOne."_name"; // replace this on other folder that fit the standard
 	$tableTwoName = $keywordTwo;
 	$columnTableTwoName = $keywordTwo."_name";
 	//there is an extra parameter 'nick_name' to be changed by hand in line 24 and 29

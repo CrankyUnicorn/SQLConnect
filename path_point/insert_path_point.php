@@ -2,18 +2,18 @@
 include '../connect.php';
 include '../input_cleaner.php';
 
-$keywordOne = "player";
-$keywordTwo = "character";
+$keywordOne = "path";
+$keywordTwo = "point";
 
-$filePath = "../page_player_character.php";
-$fileName = "insert_player_character";
+$filePath = "../page_path_point.php";
+$fileName = "insert_path_point";
 
 $tableName = $keywordOne . "_" . $keywordTwo;
 $columnOneName = $keywordOne . "_id";
 $columnTwoName = $keywordTwo . "_id";
 
 $tableOneName = $keywordOne;
-$columnTableOneName = "nick_name"; // replace this on other folder that fit the standard
+$columnTableOneName = $keywordOne . "_name"; // replace this on other folder that fit the standard
 $tableTwoName = $keywordTwo;
 $columnTableTwoName = $keywordTwo . "_name";
 
@@ -34,8 +34,8 @@ if (empty($idOne) || empty($idTwo)) {
 		$sql = "SELECT * FROM $tableOneName WHERE id = $idOne ";
 
 		$stmt = sqlsrv_query($conn, $sql);
-		
-		if (sqlsrv_has_rows ( $stmt ) === false) {
+
+		if (sqlsrv_has_rows($stmt) === false) {
 			header("Location: " . $filePath . "?" . $fileName . "=invalid_id_1");
 			exit();
 		}
@@ -44,8 +44,8 @@ if (empty($idOne) || empty($idTwo)) {
 		$sql = "SELECT * FROM $tableTwoName WHERE id = $idTwo ";
 
 		$stmt = sqlsrv_query($conn, $sql);
-		
-		if (sqlsrv_has_rows ( $stmt ) === false) {
+
+		if (sqlsrv_has_rows($stmt) === false) {
 			header("Location: " . $filePath . "?" . $fileName . "=invalid_id_2");
 			exit();
 		}
@@ -54,8 +54,8 @@ if (empty($idOne) || empty($idTwo)) {
 		$sql = "SELECT * FROM $tableName WHERE $columnTwoName = $idTwo ";
 
 		$stmt = sqlsrv_query($conn, $sql);
-		
-		if (sqlsrv_has_rows ( $stmt ) != false) {
+
+		if (sqlsrv_has_rows($stmt) != false) {
 			header("Location: " . $filePath . "?" . $fileName . "=taken");
 			exit();
 		}

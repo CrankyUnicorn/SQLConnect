@@ -1,14 +1,14 @@
 :root {
-	--magenta:#fb5e92;
-	--red:#ff4848;
-	--orange:#ffae51;
-	--yellow:#fff066;
-	--lightgreen:#b6ff62;
-	--green:#48ff51;
-	--teal:#52ffd4;
-	--lightblue:#79a5ff;
-	--blue:#3e3eff;
-	--purple:#9f72f8;
+	--magenta:#ffa8f8;
+	--red:#f58b8b;
+	--orange:#ffcd94;
+	--yellow:#fcf29f;
+	--lightgreen:#bdf57e;
+	--green:#95f79a;
+	--teal:#3dffcf;
+	--lightblue:#96a9fd;
+	--blue:#7e63f7;
+	--purple:#ca8ffa;
 }
 
 body{
@@ -88,7 +88,7 @@ button{
 	float: left;
 	display: inline;
 	height: 20px;
-	width: 6px;
+	width: 12px;
 	transition: 0.3s;
 }
 
@@ -207,34 +207,42 @@ button{
 	;
 }
 
-.pc_magenta_red{
-	background: linear-gradient(90deg, var(--magenta) 50%, var(--red) 50%);
+.pc_red_magenta{
+	background: linear-gradient(90deg, var(--red) 50%, var(--magenta) 40%);
 }
 
-.pc_red_orange{
-	background: linear-gradient(90deg, var(--red) 50%,var(--orange) 50%);
+.pc_orange_red{
+	background: linear-gradient(90deg, var(--orange) 50%,var(--red) 50%);
 }
 
-.pc_red_yellow{
-	background: linear-gradient(90deg, var(--red) 50%, var(--yellow) 50%);
+.pc_yellow_red{
+	background: linear-gradient(90deg, var(--yellow) 50%, var(--red) 50%);
 }
 
-.pc_orange_yellow{
-	background: linear-gradient(90deg, var(--orange) 50%, var(--yellow) 50%);
+.pc_yellow_orange{
+	background: linear-gradient(90deg, var(--yellow) 50%, var(--orange) 50%);
 }
 
-.pc_yellow_lightgreen{
-	background: linear-gradient(90deg, var(--yellow) 50%, var(--lightgreen) 50%);
+.pc_lightgreen__yellow{
+	background: linear-gradient(90deg, var(--lightgreen) 50%, var(--yellow) 50%);
 }
 
-.pc_lightgreen_green{
-	background: linear-gradient(90deg, var(--lightgreen) 50%, var(--green) 50%);
+.pc_lightgreen_orange{
+	background: linear-gradient(90deg, var(--lightgreen) 50%, var(--orange) 50%);
 }
 
-.pc_red_teal{
-	background: linear-gradient(90deg, var(--red) 50%, var(--teal) 50%);
+.pc_green_lightgreen{
+	background: linear-gradient(90deg, var(--green) 50%, var(--lightgreen) 50%);
 }
 
-.pc_teal_lightblue{
-	background: linear-gradient(90deg, var(--teal) 50%, var(--lightblue) 50%);
+.pc_teal_red{
+	background: linear-gradient(90deg, var(--teal) 50%, var(--red) 50%);
+}
+
+.pc_teal_yellow{
+	background: linear-gradient(90deg, var(--teal) 50%, var(--yellow) 50%);
+}
+
+.pc_lightblue_teal{
+	background: linear-gradient(90deg, var(--lightblue) 50%, var(--teal) 50%);
 }

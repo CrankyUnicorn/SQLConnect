@@ -2,16 +2,16 @@
 
 	<?php 
 	//hope you just to need to change this
-	$fileName = "character_vehicle"; 
+	$fileName = "vehicle_path"; 
 	$pathSufix = $fileName."/"; 
-	$topic_one = "Personagem";
-	$topic_two = "Veículo";
+	$topic_one = "Veículo";
+	$topic_two = "Caminho";
 	$topic = $topic_two." de ".$topic_one;
-	$helperTableOne = "character";
-	$helperTableTwo = "vehicle";
+	$helperTableOne = "vehicle";
+	$helperTableTwo = "path";
 	?>
 
-<div class="pc_topbar pc_yellow_red"></div>
+<div class="pc_topbar pc_teal_yellow"></div>
 <!--main content-->
 <div id="pc_forms_holder" class="pc_forms_holder">
 

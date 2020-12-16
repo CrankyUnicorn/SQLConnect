@@ -2,16 +2,16 @@
 
 	<?php 
 	//hope you just to need to change this
-	$fileName = "character_vehicle"; 
+	$fileName = "match_map"; 
 	$pathSufix = $fileName."/"; 
-	$topic_one = "Personagem";
-	$topic_two = "Veículo";
+	$topic_one = "Partida";
+	$topic_two = "Mapa";
 	$topic = $topic_two." de ".$topic_one;
-	$helperTableOne = "character";
-	$helperTableTwo = "vehicle";
+	$helperTableOne = "match";
+	$helperTableTwo = "map";
 	?>
 
-<div class="pc_topbar pc_yellow_red"></div>
+<div class="pc_topbar pc_lightgreen_orange"></div>
 <!--main content-->
 <div id="pc_forms_holder" class="pc_forms_holder">
 
