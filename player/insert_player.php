@@ -28,7 +28,7 @@ if(empty($name) || empty($password) || empty($email)){
 			}else{
 				
 			//CHECK EMAIL IF EXIST ABORT PROCESS
-			$sql = "SELECT * FROM player WHERE email='$email'";
+			$sql = "SELECT * FROM $tableName WHERE email='$email'";
 			$params = array();
 			$options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
 			$stmt = sqlsrv_query( $conn, $sql, $params, $options);

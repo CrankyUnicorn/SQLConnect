@@ -25,7 +25,7 @@ if(empty($name)){
 			}else{
 				
 			//CHECK
-			$sql = "SELECT * FROM map";
+			$sql = "SELECT * FROM $tableName WHERE $columnOneName = '$name'";
 			$params = array();
 			$options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
 			$stmt = sqlsrv_query( $conn, $sql, $params, $options);
