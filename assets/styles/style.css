@@ -1,14 +1,14 @@
 :root {
-	--magenta:#ffa8f8;
-	--red:#f58b8b;
-	--orange:#ffcd94;
-	--yellow:#fcf29f;
-	--lightgreen:#bdf57e;
-	--green:#95f79a;
-	--teal:#3dffcf;
-	--lightblue:#96a9fd;
-	--blue:#7e63f7;
-	--purple:#ca8ffa;
+	--magenta:#f58b8b;
+	--red:#fdb377;
+	--orange:#ffe181;
+	--yellow:#c1f57e;
+	--lightgreen:#62d65e;
+	--green:#3dffcf;
+	--teal:#7c7eff;
+	--lightblue:#9763f7;
+	--blue:#d38ffa;
+	--purple:#ffa8f8;
 }
 
 body{
@@ -208,7 +208,7 @@ button{
 }
 
 .pc_red_magenta{
-	background: linear-gradient(90deg, var(--red) 50%, var(--magenta) 40%);
+	background: linear-gradient(90deg, var(--red) 49%, var(--magenta) 51%);
 }
 
 .pc_orange_red{
